@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useContext } from "react";
 import styled from "styled-components";
-import ThemeContext from "../../contexts/ThemeContext";
+import { FrameStoreContext } from "../../contexts/FrameStoreContext";
 import Youtube from "../elements/icons/Youtube";
 
 const YoutubeContainer = styled.div`
@@ -27,10 +27,10 @@ const YoutubeFooter = styled.div`
 `;
 
 const FeedYoutube = ({ video }) => {
-  const [themeColor] = useContext(ThemeContext);
+  const [frameStoreData] = useContext(FrameStoreContext);
   var humanDate = moment(new Date(video.publishedAt), moment.ISO_8601);
   return (
-    <YoutubeContainer borderTheme={themeColor}>
+    <YoutubeContainer borderTheme={frameStoreData.borderColor}>
       <YoutubeText>
         <Youtube />
         <p>{humanDate.format("MMM Do, YYYY")}</p>

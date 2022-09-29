@@ -1,18 +1,17 @@
-import ThemeContext from "./contexts/ThemeContext";
 import "./App.css";
 import Header from "./components/Containers/Header";
+import LogIn from "./components/elements/LogIn";
 import Feed from "./components/Feed/Feed";
-import { useState } from "react";
+import { FrameStoreProvider } from "./contexts/FrameStoreContext";
 
 function App() {
-  const [themeColor, setThemeColor] = useState("#eee");
   return (
     <div className="App">
-      <ThemeContext.Provider value={[themeColor, setThemeColor]}>
+      <FrameStoreProvider>
         <Header />
-        <input type="color" onChange={(e) => setThemeColor(e.target.value)} />
+        <LogIn />
         <Feed />
-      </ThemeContext.Provider>
+      </FrameStoreProvider>
     </div>
   );
 }

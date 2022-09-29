@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { FrameStoreContext } from "../../contexts/FrameStoreContext";
 import FramestoreFull from "../elements/icons/FramestoreFull";
 
 const LogoH1 = styled.h1`
@@ -6,6 +8,7 @@ const LogoH1 = styled.h1`
   font-size: 26px;
   font-weight: 700;
   margin-left: 25px;
+  color: ${(props) => (props.logged ? "#0075C9" : "#999")};
   @media (max-width: 600px) {
     font-size: 18px;
     margin-top: 9px;
@@ -13,10 +16,11 @@ const LogoH1 = styled.h1`
 `;
 
 const Header = ({ className }) => {
+  const [frameStoreData] = useContext(FrameStoreContext);
   return (
     <header className={className}>
       <FramestoreFull />
-      <LogoH1>SOCIAL FEED</LogoH1>
+      <LogoH1 logged={frameStoreData.isUserLoggedIn}>SOCIAL FEED</LogoH1>
     </header>
   );
 };
@@ -26,7 +30,4 @@ export default styled(Header)`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  img {
-    border: thin solid red;
-  }
 `;
