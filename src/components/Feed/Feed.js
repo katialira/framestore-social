@@ -34,7 +34,7 @@ const Feed = () => {
     //     setTweets(tweetsReturned.data);
     //   });
     setTweets(frameTweets.data);
-    setYoutubes(frameYouTubeVids.items);
+    setYoutubes(frameYouTubeVids.items.slice(0, 10));
   }, []);
 
   return (

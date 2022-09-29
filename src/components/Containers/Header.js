@@ -20,14 +20,12 @@ const Header = ({ className }) => {
   return (
     <header className={className}>
       <FramestoreFull />
-      <LogoH1 logged={frameStoreData.isUserLoggedIn}>SOCIAL FEED</LogoH1>
+      <LogoH1 logged={frameStoreData.isUserLoggedIn}>SOCIAL HUB</LogoH1>
     </header>
   );
 };
 
 export default styled(Header)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   padding: 20px;
 `;
