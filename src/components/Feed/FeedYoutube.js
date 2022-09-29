@@ -1,9 +1,11 @@
 import moment from "moment";
+import { useContext } from "react";
 import styled from "styled-components";
+import ThemeContext from "../../contexts/ThemeContext";
 import Youtube from "../elements/icons/Youtube";
 
 const YoutubeContainer = styled.div`
-  border: thin solid #eee;
+  border: thin solid ${(props) => props.borderTheme};
   margin-bottom: 20px;
 `;
 
@@ -25,9 +27,10 @@ const YoutubeFooter = styled.div`
 `;
 
 const FeedYoutube = ({ video }) => {
+  const [themeColor] = useContext(ThemeContext);
   var humanDate = moment(new Date(video.publishedAt), moment.ISO_8601);
   return (
-    <YoutubeContainer>
+    <YoutubeContainer borderTheme={themeColor}>
       <YoutubeText>
         <Youtube />
         <p>{humanDate.format("MMM Do, YYYY")}</p>

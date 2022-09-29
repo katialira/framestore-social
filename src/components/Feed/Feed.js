@@ -10,7 +10,7 @@ import FeedYoutube from "./FeedYoutube";
 const FeedContainer = styled.div`
   display: flex;
   justify-content: space-between;
-
+  margin-top: 40px;
   @media (max-width: 600px) {
     display: block;
   }
@@ -28,11 +28,12 @@ const Feed = () => {
   const [youtubes, setYoutubes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/")
-      .then((response) => response.json())
-      .then((tweetsReturned) => {
-        setTweets(tweetsReturned.data);
-      });
+    // fetch("http://localhost:8080/")
+    //   .then((response) => response.json())
+    //   .then((tweetsReturned) => {
+    //     setTweets(tweetsReturned.data);
+    //   });
+    setTweets(frameTweets.data);
     setYoutubes(frameYouTubeVids.items);
   }, []);
 

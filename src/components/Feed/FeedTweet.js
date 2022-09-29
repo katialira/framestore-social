@@ -1,5 +1,7 @@
 import moment from "moment";
+import { useContext } from "react";
 import styled from "styled-components";
+import ThemeContext from "../../contexts/ThemeContext";
 import Twitter from "../elements/icons/Twitter";
 
 const TweetFooter = styled.div`
@@ -10,7 +12,7 @@ const TweetFooter = styled.div`
 `;
 
 const TweetContainer = styled.div`
-  border: thin solid #eee;
+  border: thin solid ${(props) => props.borderTheme};
   margin-bottom: 20px;
 `;
 
@@ -19,9 +21,10 @@ const TweetText = styled.div`
 `;
 
 const FeedTweet = ({ tweet }) => {
+  const [themeColor] = useContext(ThemeContext);
   var humanDate = moment(new Date(tweet.created_at), moment.ISO_8601);
   return (
-    <TweetContainer>
+    <TweetContainer borderTheme={themeColor}>
       <TweetText>
         <p>{humanDate.format("MMM Do, YYYY")}</p>
         <p>{tweet.text}</p>
